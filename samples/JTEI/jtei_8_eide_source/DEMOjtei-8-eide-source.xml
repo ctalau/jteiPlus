@@ -67,10 +67,57 @@
           computer-based modeling, understood here as a way to establish meaning. The distinctions
           between creation and use of models as well as between modeling for production and modeling
           for understanding are presented and compared with other categorizations or models of
-          modeling.</p>
+          modeling. One method of establishing meaning in TEI documents is achieved via linking
+          mechanisms between TEI and external ontologies. How such linking can be done and what it
+          may imply for the semantic openness and usability of TEI documents is the practical focus
+          of this article.</p>
       </div>
     </front>
     <body>
+      <div xml:id="intro">
+        <head>Introduction</head>
+        <p>In philosophy, <term>ontology</term> has for at least 2,500 years denoted the study of
+          being. Computer science <term>ontologies</term>, usually in the plural, are different from
+          the philosophical concept of ontology. Computer science ontologies refer to shared
+          conceptualizations expressed in formal languages (<ref
+            type="bibl" target="#gruber09"
+          >Gruber 2009</ref>) and have been a topic of study for some thirty years, initially
+          connected to the artificial intelligence community. They have not been of much importance
+          in digital humanities until the last ten to fifteen years, but are now gaining momentum as
+          the semantic web develops.</p>
+        <p>In this paper I will discuss ontologies in the context of the Text Encoding Initiative
+          and based on the computer science tradition.<note>This paper springs out of work in the
+            TEI Ontologies SIG since 2004. It is also based on long discussions with colleagues at
+            the Unit for Digital Documentation at the University of Oslo and beyond. Two anonymous
+            reviewers of this article and the editors of the journal contributed significantly to
+            its final form. However, the interpretation and formulation, and responsibility for its
+            errors and omissions, is mine alone.</note> However, although computer science
+          ontologies are different from philosophical ontology, the two are not totally disconnected
+            (<ref type="bibl" target="#zuniga01">Zúñiga 2001</ref>), and therefore some remarks will
+          be made on relations with philosophy as well. The focus will be on how meaning can be
+          established in computer-based modeling. Three broad areas will be
+          <?oxy_insert_start author="Cristian Talau" timestamp="20151123T155003+0200"?>as<?oxy_insert_end?>described.
+          One is the establishment of meaning through working with and interpreting documents seen
+          as sources for scholarly work, be they primary or secondary. Another area is the
+          establishment of meaning through the development of models, including ontologies. A third
+          area of meaning production with particular reference to TEI happens through linking
+          between TEI documents and external ontologies. How such linking can be done and what it
+          may imply for the meaning and usability of TEI documents is an important focus of this
+          article.</p>
+        <p>TEI represents a shared conceptualization of what exists in the domains relevant to text
+          encoding. It can be expressed in formal models, but it is questionable whether TEI can be
+          seen as an ontology in the computer science sense. According to the classification by
+          Guarino, Oberle, and Staab (<ref
+            type="bibl" target="#guarino09"
+            >2009, 12–13</ref>), XML
+          schemas are typically not expressive enough for the formality we need for ontologies.
+          However, the level of language formality forms a continuum, and it is difficult to draw a
+          strict line where the formal starts. So for instance, some parts of the TEI scheme, such
+          as the systems used to encode dictionaries, bibliographies, and representations of
+          persons, places, and events, may be closer to an ontology than other, less formalized
+          parts of the standard (<ref
+            type="bibl" target="#ore09">Ore and Eide 2009</ref>).</p>
+      </div>
       <div xml:id="p4top5">
         <head>P4 to P5<note>This section is based on Eide and Ore (<ref type="bibl"
               target="#eideore07">2007</ref>) and Eide (<ref type="bibl" target="#eide07"
@@ -79,21 +126,54 @@
           strings referring to places, people, and organizations, could be encoded using elements
           such as <gi>rs</gi> and <gi>name</gi>. These elements were used to encode names and other
           referring strings as textual features. P4 included no construct<note>The guidelines
-            pointed to <title level="a">Simple Analytic Mechanisms</title> and <title level="a"
+            pointed to <title
+              level="a">Simple Analytic Mechanisms</title> and <title level="a"
               >Feature Structures</title> as <quote source="#quoteref1"
               ><supplied>a</supplied>ppropriate mechanisms for the encoding of such interpretative
-              gestures</quote> (<ref xml:id="quoteref1" type="bibl" target="#tei01">TEI Consortium
+              gestures</quote> (<ref
+              xml:id="quoteref1" type="bibl" target="#tei01"
+              >TEI Consortium
               2001, ch. 20</ref>) but these mechanisms were never in common use, and P4 did not
             include any standard way to represent specific external entities such as places or
             persons, just mechanisms that could be used to model them.</note> to encode information
           about real world or fictitious entities that the strings in the text referred to: <cit>
-            <quote source="#quoteref2">It should be noted however that no provision is made by the
+            <quote source="#quoteref2"
+              >It should be noted however that no provision is made by the
               present tag set for the representation of the abstract structures, or virtual objects
               to which names or dates may be said to refer. In simple terms, where the core tag set
               allows one to represent a name, this additional tag set allows one to represent a
               personal name, but neither provides for the direct representation of a person.</quote>
             <ref xml:id="quoteref2" type="bibl" target="#tei01">TEI Consortium 2001, ch. 20</ref>
-          </cit></p>
+          </cit>
+        </p>
+        <p>In P5 this was changed. Real or fictitious entities pointed to by referring strings in
+          the text were now included in the standard so that in addition to the referring strings,
+          which could still be encoded as in P4, the external entities could be represented as well: <cit>
+            <quote source="#quoteref3"
+              >This module also provides elements for the representation of
+              information about the person, place, or organization to which a given name is
+              understood to refer and to represent the name itself, independently of its
+              application. In simple terms, where the core module allows one simply to represent
+              that a given piece of text is a name, this module allows one further to represent a
+              personal name, to represent the person being named, and to represent the canonical
+              name being used. A similar range is provided for names of places and organizations.
+              The main intended applications for this module are in biographical, historical, or
+              geographical data systems such as gazetteers and biographical databases, where these
+              are to be integrated with encoded texts.</quote>
+            <ref xml:id="quoteref3" type="bibl" target="#tei13">TEI Consortium 2013, ch. 13</ref>
+          </cit>
+        </p>
+        <p>This means that while P4 represented only textual occurrences, P5 goes beyond that
+          limitation. In P5, names can be connected to a representation of the named object, which
+          is typically placed in the header of the TEI document (<ref
+            type="bibl" target="#wittern09"
+          >Wittern 2009</ref>). The inclusion of the new elements provided one
+          standard way to create such representations, which was needed by many text encoders. We
+          will see later how this header information represents one way among others with which to
+          link the referring strings as they are encoded in the text to external ontologies. As
+          other methods do exist, the inclusion of the new elements in P5 was not strictly necessary
+          for interoperability, but did facilitate a standard way of creating the
+          interconnections.</p>
       </div>
       <div xml:id="modeling">
         <head>Two Ways of Modeling</head>
@@ -902,3 +982,4 @@
     </back>
   </text>
 </TEI>
+<?oxy_options track_changes="on"?>
